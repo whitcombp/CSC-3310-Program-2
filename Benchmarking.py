@@ -27,24 +27,40 @@ def benchmark(size, number, k):
         times.append(end_time - start_time)
     return times
 
-def graph_times(results):
-    sizes = results.keys()
+def graph_times(results, size):
+    ks = results.keys()
     times = results.values()
-    plt.scatter(sizes, times)
-    plt.xlabel("sizes")
+    plt.scatter(ks, times)
+    plt.xlabel("k value")
     plt.ylabel("times (seconds)")
-    plt.show()
+    plt.title("Size: " + str(size))
+    savefig = str(len(ks)) + "k_results" + str(size) + ".png"
+    plt.savefig(savefig)
+    plt.close()
 
+def benchmark_loop(size_range):
+    number = 1 #number of arrays to make of each size
+    for size in size_range:
+        results = {}
+        for k in [1, len(size)//2, len(size) - 1]:
+            results.setdefault(k, benchmark(size, number, k))
+        graph_times(results, size)
 def main():
-    results = {}
-    size = 1_000_000
-    ks = []
-    for k in range(1, 1_000_000, 500):
-        ks.append(k)
-    number = 1
-    for k in ks:
-        results.setdefault(size, benchmark(size, number, k))
-    graph_times(results)
+
+    sizes = [10_000_000
+             ,50_000_000
+             ,100_000_000
+             ,200_000_000
+             ,500_000_000
+             ]
+    sizes = [1_000_000
+             ,5_000_000
+             ,10_000_000
+             ,50_000_000
+             ,100_000_000
+             ]
+    benchmark_loop(sizes)
+
 
 
 
