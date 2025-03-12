@@ -6,9 +6,9 @@ approach.
 - [X] An explanation and justification for why your algorithm is correct (1-3 paragraphs)
 - [X] A table of your test cases, the answers you expect, and the answers returned by running your implementation of the
 algorithm.
-- [ ] The derivation of a recurrence relation describing the run time in terms of the number of points n. (Show your work!)
+- [X] The derivation of a recurrence relation describing the run time in terms of the number of points n. (Show your work!)
 You may assume that the random pivot divides the elements in half each time.
-- [ ] A solution to the recurrence relation (show your work). Ideally, you will get a run time in terms of O (n) in asymptotic
+- [X] A solution to the recurrence relation (show your work). Ideally, you will get a run time in terms of O (n) in asymptotic
 notation.
 - [ ] A table and graph from benchmarking different lists with different sizes and values of k. Benchmark your implementation
 versus an approach that sorts the numbers and picks the element at index k − 1. If the benchmarks do not support your
@@ -143,7 +143,15 @@ As such, our final recurrence is:
 $T(n) = T(n/5) + T(7n/10) + O(n)$
 
 ## Solution to the recurrence relation
+To solve this recurrence, we can employ a guess and check:  
+Guess: $T(n)\in O(n)$  
+So: $T(n) \le cn$  
+Assume: $T(n/5) + T(7n/10)\le c\frac{n}{5} + c\frac{7n}{10}$  
+Then:  
+$T(n)\le c\frac{n}{5} + c\frac{7n}{10}\le cn$  
+$\frac{9c}{10}\le c$, which is true for all $c >= 0$
 
+Therefore, we have proven that $T(n) \in O(n)$
 
 ## Benchmarking results
 
