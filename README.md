@@ -127,8 +127,23 @@ operation until we reach the base case. This is done in O(n) time, as we are onl
 sublists and the sublists get smaller each time.
 
 ## Recurrence relation of run time
+First, we have to analyze `PARTITION`. We can see that this function runs in $O(n)$ since we run through all elements `A`, which is length `n`.
+
+Now, starting in `SELECTION_RECURSIVE`, we can see that we first split the list into sublists, which takes $O(n)$ as we are going through all of `A`.
+
+Following that, the medians are calculated in $O(n)$ due to each sort taking place on at **most** 5 elements (since each sublist is), and therefore can be reduced to constant time. As we are sorting $n/5$ sublists, we get our $O(n)$.
+
+We get to our first recursive call for choosing the pivot. This call with be a "conquer" step, where we get $T(n/5)$, since medians is at that length.
+
+As stated above, `PARTITION` runs in $O(n)$, so we can keep going.
+
+Finally, we get to a split of how the next and final recursive function is called. Considering this, we know that at least half of the medians are $\ge$ than the median of medians (which is what we are looking for). Therefore, half of the n/5 blocks have at least 3 elements $\ge$ median of medians, which gives us a split of 3n/10, with the other partition being the worst case of 7n/10.
+
+As such, our final recurrence is:  
+$T(n) = T(n/5) + T(7n/10) + O(n)$
 
 ## Solution to the recurrence relation
+
 
 ## Benchmarking results
 
