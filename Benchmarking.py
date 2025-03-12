@@ -61,8 +61,5 @@ def main():
              ]
     benchmark_loop(sizes)
 
-
-
-
 if __name__ == "__main__":
     main()
