@@ -15,3 +15,39 @@ versus an approach that sorts the numbers and picks the element at index k − 1
 theoretically-derived run time and/or do not provide evidence that the run time of your algorithm grows more slowly than the sorting approach,
 this may indicate a flaw in your implementation.
 - [ ] An appendix containing all of your source code and test cases.
+
+# Report
+## Approach to solving the problem
+
+### Illustration 1: 
+
+### Illustration 2:
+
+## Pseudocode
+```python
+
+```
+
+## Test cases
+| Input | Expected Output | Actual Output |
+|--------|----------------|----------------|
+
+## Recurrence relation of run time
+
+## Solution to the recurrence relation
+
+## Benchmarking results
+
+## Appendix
+```python
+# Your source code here
+```
+```python
+# Your test cases here
+```
+```python
+# Your benchmarking code here
+```
+```python
+# Your benchmarking results here
+```
