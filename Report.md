@@ -2,11 +2,12 @@
 ## Approach to solving the problem
 The approach to the problem we took, was finding an efficient way to sort the input array so that we can then just take
 the kth element. The algorithm we used is based off of the Median of Medians algorithm. This algorithm is a 
-divide-and-conquer approach that finds the sorts an unsorted array in linear time. Which we then can use to index with
+divide-and-conquer approach that finds the sorts an unsorted array in linear time, which we then can use to index with
 the k element. This works off of dividing the list into sublists of 5 elements each, and then finding the median of each.
 This median then is used as the pivot value to partition the array into three parts: elements less than the pivot, 
-elements equal to the pivot, and elements greater than the pivot. This is done in O(n) time. This can be done recursively
-until the entire array is sorted, which we can then take the kth element from.
+elements equal to the pivot, and elements greater than the pivot. This is done in O(n) time. From this the array containing
+the kth element is chosen, based on where k is in relation to the pivot. This is done recursively and stops once the array is
+of size 5, at which k is found by sorting. 
 
 ### Illustration 1: 
 ![img_1.png](img_1.png)  
@@ -102,11 +103,21 @@ invariant in this case is the medians. The first step is to divide the array int
 elements each. This is done to ensure that we can find the median of each sublist in O(1) time. This
 allows us to take a median of medians, which will serve as the pivot point for the partitioning step.
 
-Here we will take this pivot and select based on the sizes of the left, middle, and right where we
-will recursively sort. In the event that the list if less than 5, we can just sort the list and 
-return the k'th element. Though, this will likely not be the case. So, we recursively perform this 
-operation until we reach the base case. This is done in O(n) time, as we are only sorting the 
-sublists and the sublists get smaller each time.
+Partitioning results in an 3 arrays: elements less than, equal to, and greater than the pivot. From
+this the array that contains k is taken, based on its relation to the pivot, and the value of k is 
+updated to reflect its original position in the new array.
+
+Loop invariant: the current array contains k (the original element to be selected)
+Base case: n < 5, where n = length of array, so the array can be sorted to find the kth element
+Inductive step: The inductive step will use strong induction to prove the loop invariant. Assume
+selection_recursive correctly partitions an array into a smaller one containing k, at any iteration i.
+Then, at i + 1, the array containing k is partitioned using the median of medians as a pivot to create
+3 arrays, containing elements less than, equal to, and greater than the pivot, respectively. From this, 
+the array containing k is used for the next recursive step, which chosen by whether k is less than, 
+equal to, or greater than the pivot. Thus, the new array contains k, so the loop invariant holds.
+Termination: since the array is partitioned into smaller arrays each step, n <= 5 will be true at some point.
+
+Thus, the algorithm correctly finds the kth element, as shown with the loop invariant and strong induction.
 
 ## Recurrence relation of run time
 First, we have to analyze `PARTITION`. We can see that this function runs in $O(n)$ since we run through all elements `A`, which is length `n`.
@@ -136,6 +147,28 @@ $\frac{9c}{10}\le c$, which is true for all $c >= 0$
 Therefore, we have proven that $T(n) \in O(n)$
 
 ## Benchmarking results
+![img_1.png](img_1.png)
+Our benchmarking covers different values of n with the same k and different values of k with
+the same n for our selection sort algorithm. All values in the array are randomly generated.
+Moreover, the brute force solution of sorting the entire array and selecting the k-1th element
+was also benchmarked, with different values of n and constant k. Since the k-1th element is 
+being selected from a list, the value of k does not matter for this comparison. 
+
+Below are the benchmarking results with the selection algorithm, using different values of k 
+throughout a 10,000,000 size array:
+![20k_results10_000_000.png](20k_results10_000_000.png) 
+The times stay consistently around 9-10 seconds despite the different values of k, so k
+is not a variable in the asymptotic complexity.
+
+Next, different values of n are benchmarked for the same k. The choice of k for these tests does
+not matter, as shown by the previous results.
+![1k_results_many_sizes.png](1k_results_many_sizes.png) 
+The times increase linearly as sizes grow to higher powers of 10, justifying the O(n) complexity.
+
+Finally, the selection algorithm was compared to the brute force method of sorting the array and
+selecting the k-1th element. Selection sort was used to sort the array, which has a time 
+complexity of O(N²). 
+TODO: GET IMAGE
 
 ## Appendix
 ### Python code
