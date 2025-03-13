@@ -44,6 +44,6 @@ def median_of_medians(arr, k):
 
 # Example usage:
 arr = [10, 4, 5, 5, 8, 6, 11, 26]
-k = 3  # Find the 3rd smallest element (index 2)
+k = 3  # Find the 4rd smallest element (index 3)
 result = median_of_medians(arr, k)
 print(f"The {k + 1}-th smallest element is: {result}")
