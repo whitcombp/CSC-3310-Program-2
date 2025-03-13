@@ -9,6 +9,9 @@ elements equal to the pivot, and elements greater than the pivot. This is done i
 the kth element is chosen, based on where k is in relation to the pivot. This is done recursively and stops once the array is
 of size 5, at which k is found by sorting. 
 
+The median of medians pivot selection method was in the following article, which also contains a more in-depth explanation:
+https://rcoh.me/posts/linear-time-median-finding/
+
 ### Illustration 1: 
 ![img_1.png](img_1.png)  
 This image illustrates the splitting of the array into sublists of 5 elements each. The median of each sublist is then taken, to a list of medians.
@@ -147,7 +150,6 @@ $\frac{9c}{10}\le c$, which is true for all $c >= 0$
 Therefore, we have proven that $T(n) \in O(n)$
 
 ## Benchmarking results
-![img_1.png](img_1.png)
 Our benchmarking covers different values of n with the same k and different values of k with
 the same n for our selection sort algorithm. All values in the array are randomly generated.
 Moreover, the brute force solution of sorting the entire array and selecting the k-1th element
@@ -156,19 +158,24 @@ being selected from a list, the value of k does not matter for this comparison.
 
 Below are the benchmarking results with the selection algorithm, using different values of k 
 throughout a 10,000,000 size array:
+
 ![20k_results10_000_000.png](20k_results10_000_000.png) 
+
 The times stay consistently around 9-10 seconds despite the different values of k, so k
 is not a variable in the asymptotic complexity.
 
 Next, different values of n are benchmarked for the same k. The choice of k for these tests does
-not matter, as shown by the previous results.
+not matter, as shown by the previous results. The times increase linearly as sizes grow to higher
+powers of 10, justifying the O(n) complexity.
+
 ![1k_results_many_sizes.png](1k_results_many_sizes.png) 
-The times increase linearly as sizes grow to higher powers of 10, justifying the O(n) complexity.
 
 Finally, the selection algorithm was compared to the brute force method of sorting the array and
 selecting the k-1th element. Selection sort was used to sort the array, which has a time 
 complexity of O(N²). 
-TODO: GET IMAGE
+
+![sorting_asymptotic_benchmarking.png](sorting_asymptotic_benchmarking.png) 
+
 
 ## Appendix
 ### Python code
