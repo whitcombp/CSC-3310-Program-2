@@ -9,11 +9,11 @@ elements equal to the pivot, and elements greater than the pivot. This is done i
 until the entire array is sorted, which we can then take the kth element from.
 
 ### Illustration 1: 
-![img_1.png](img_1.png)
+![img_1.png](img_1.png)  
 This image illustrates the splitting of the array into sublists of 5 elements each. The median of each sublist is then taken, to a list of medians.
 
 ### Illustration 2:
-![img.png](img.png)
+![img.png](img.png)  
 This image illustrates the idea of taking the list of medians, and selecting based on those values.
 
 ## Pseudocode
