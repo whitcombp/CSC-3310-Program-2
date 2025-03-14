@@ -164,17 +164,35 @@ throughout a 10,000,000 size array:
 The times stay consistently around 9-10 seconds despite the different values of k, so k
 is not a variable in the asymptotic complexity.
 
+---
 Next, different values of n are benchmarked for the same k. The choice of k for these tests does
 not matter, as shown by the previous results. The times increase linearly as sizes grow to higher
 powers of 10, justifying the O(n) complexity.
 
-![1k_results_many_sizes.png](1k_results_many_sizes.png) 
+![1k_results_many_sizes.png](1k_results_many_sizes.png)
+![100005_n_benchmark.png](100005_n_benchmark.png)
 
+---
 Finally, the selection algorithm was compared to the brute force method of sorting the array and
 selecting the k-1th element. Selection sort was used to sort the array, which has a time 
 complexity of O(N²). 
 
-![sorting_asymptotic_benchmarking.png](sorting_asymptotic_benchmarking.png) 
+![sorting_asymptotic_benchmarking.png](sorting_asymptotic_benchmarking.png)
+![29005_n_sort_benchmark.png](29005_n_sort_benchmark.png)
+
+---
+These justifications are also confirmed by the following test statistics:  
+```
+For selection:
+m1: 0.9741836387024632
+p1: 1.3870105391189663e-15
+
+For sorting:
+m2: 1.6848129470664706
+p2: 5.99574536886922e-47
+```
+
+The slopes, taken by `linregress()` by fitting the linear model to the logorithms of our benchmarks, we can see that `m1` shows that our SELECTION algorithms is at $O(n)$, while `m2` shows the brute forced selection sort at sub $O(n^2)$.
 
 
 ## Appendix

@@ -10,8 +10,7 @@ algorithm.
 You may assume that the random pivot divides the elements in half each time.
 - [X] A solution to the recurrence relation (show your work). Ideally, you will get a run time in terms of O (n) in asymptotic
 notation.
-- [ ] A table and graph from benchmarking different lists with different sizes and values of k. Benchmark your implementation
+- [X] A table and graph from benchmarking different lists with different sizes and values of k. Benchmark your implementation
 versus an approach that sorts the numbers and picks the element at index k − 1. If the benchmarks do not support your
-theoretically-derived run time and/or do not provide evidence that the run time of your algorithm grows more slowly than the sorting approach,
-this may indicate a flaw in your implementation.
+theoretically-derived run time and/or do not provide evidence that the run time of your algorithm grows more slowly than the sorting approach, this may indicate a flaw in your implementation.
 - [X] An appendix containing all of your source code and test cases.

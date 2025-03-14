@@ -42,7 +42,7 @@ def benchmark_loop(size_range):
     number = 1 #number of arrays to make of each size
     for size in size_range:
         results = {}
-        for k in [1, len(size)//2, len(size) - 1]:
+        for k in [1, (size)//2, (size) - 1]:
             results.setdefault(k, benchmark(size, number, k))
         graph_times(results, size)
 def main():
