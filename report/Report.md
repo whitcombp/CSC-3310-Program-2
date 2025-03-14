@@ -1,4 +1,5 @@
 # Report
+### Authors: Mikhail Filippov, Nicolette Niewiadomska, Patrick Saxton, Preston Whitcomb
 ## Approach to solving the problem
 The approach to the problem we took, was finding an efficient way to sort the input array so that we can then just take
 the kth element. The algorithm we used is based off of the Median of Medians algorithm. This algorithm is a 
