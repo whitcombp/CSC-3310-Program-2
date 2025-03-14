@@ -184,7 +184,7 @@ complexity of O(N²).
 These justifications are also confirmed by the following test statistics:  
 ```
 For selection:
-m1: 0.9741836387024632
+m1: 0.9425048358901872
 p1: 1.3870105391189663e-15
 
 For sorting:
